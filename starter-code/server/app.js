@@ -7,7 +7,7 @@ const bodyParser   = require('body-parser');
 const layouts      = require('express-ejs-layouts');
 const mongoose     = require('mongoose');
 const cors         = require('cors');
-
+const apiRouter = require("./routes/api/journal-entries");
 mongoose.connect('mongodb://localhost/journal-development');
 
 const app = express();
@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(layouts);
 
 const index = require('./routes/index');
+app.use("/api", apiRouter);
 app.use('/', index);
 
 app.all('/*', function (req, res) {

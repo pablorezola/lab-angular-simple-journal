@@ -1,0 +1,8 @@
+<app-entry-form-component></app-entry-form-component>
+
+<div *ngFor="let entry of list ">
+<p>{{entry.title}}</p>
+<p>{{entry.date}}</p>
+<a [routerLink]="['/single',entry.id]">See more</a>
+
+</div>
